@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Croplytics – Smart Crop Recommendation</title>
+    <title>Croplytics</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
       rel="stylesheet"
@@ -35,124 +35,501 @@
         background: #4f6f52;
         cursor: pointer;
       }
+      .range-labels {
+        margin-top: -0.25rem;
+        padding: 0 0.5rem;
+      }
+      .range-labels span {
+        transform: translateX(-50%);
+        position: relative;
+        left: 0;
+      }
       .crop-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
       }
     </style>
   </head>
-
-  <body class="bg-gray-50 font-['Roboto'] min-h-screen">
-    <header class="gradient-bg py-6 text-white text-center shadow-md">
-      <h1 class="text-3xl font-bold">🌱 Croplytics</h1>
-      <p class="text-lg mt-1">Smart Crop & Fertilizer Advisory System</p>
+  <body class="min-h-screen bg-gray-50 font-['Roboto']">
+    <header class="gradient-bg text-white py-8 px-4 shadow-lg">
+      <div class="container mx-auto max-w-6xl">
+        <h1 class="text-4xl font-bold mb-2">Croplytics</h1>
+        <p class="text-xl">
+          An ML-powered Crop and Fertilizer Recommendation System — empowering
+          farmers with intelligent decisions 🌾, using soil and weather data to
+          maximize crop yield.
+        </p>
+      </div>
     </header>
 
-    <main class="max-w-4xl mx-auto mt-10 px-6">
-      <form id="conditionForm" class="bg-white p-8 rounded-lg shadow">
-        <h2 class="text-2xl font-semibold text-primary mb-6 text-center">
-          Enter Soil & Weather Conditions
+    <main class="container mx-auto max-w-6xl py-8 px-4">
+      <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+        <h2 class="text-2xl font-semibold text-dark mb-6">
+          Enter Your Farm Conditions
         </h2>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <!-- Nitrogen -->
-          <div>
-            <label class="block font-medium text-gray-700 mb-1">Nitrogen (N)</label>
-            <input id="nitrogen" type="range" min="0" max="140" value="50" class="w-full input-range" />
-            <input id="nitrogenInput" type="number" min="0" max="140" value="50"
-              class="mt-2 w-full border p-2 rounded-md" />
+        <form id="conditionForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-6">
+            <div>
+              <label
+                for="nitrogen"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Nitrogen (N) level (ppm)</label
+              >
+              <div class="flex items-center gap-4">
+                <input
+                  type="range"
+                  id="nitrogen"
+                  name="nitrogen"
+                  min="0"
+                  max="200"
+                  value="50"
+                  step="1"
+                  class="input-range flex-1 h-2 rounded-lg appearance-none cursor-pointer bg-gray-200"
+                />
+                <input
+                  type="number"
+                  id="nitrogenInput"
+                  name="nitrogenInput"
+                  min="0"
+                  max="200"
+                  value="50"
+                  step="1"
+                  class="w-20 px-2 py-1 border rounded-lg"
+                />
+                <span class="text-gray-500 text-sm">ppm</span>
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="phosphorus"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Phosphorus (P) level (ppm)</label
+              >
+              <div class="flex items-center gap-4">
+                <input
+                  type="range"
+                  id="phosphorus"
+                  name="phosphorus"
+                  min="0"
+                  max="200"
+                  value="50"
+                  step="1"
+                  class="input-range flex-1 h-2 rounded-lg appearance-none cursor-pointer bg-gray-200"
+                />
+                <input
+                  type="number"
+                  id="phosphorusInput"
+                  name="phosphorusInput"
+                  min="0"
+                  max="200"
+                  value="50"
+                  step="1"
+                  class="w-20 px-2 py-1 border rounded-lg"
+                />
+                <span class="text-gray-500 text-sm">ppm</span>
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="potassium"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Potassium (K) level (ppm)</label
+              >
+              <div class="flex items-center gap-4">
+                <input
+                  type="range"
+                  id="potassium"
+                  name="potassium"
+                  min="0"
+                  max="200"
+                  value="50"
+                  step="1"
+                  class="input-range flex-1 h-2 rounded-lg appearance-none cursor-pointer bg-gray-200"
+                />
+                <input
+                  type="number"
+                  id="potassiumInput"
+                  name="potassiumInput"
+                  min="0"
+                  max="200"
+                  value="50"
+                  step="1"
+                  class="w-20 px-2 py-1 border rounded-lg"
+                />
+                <span class="text-gray-500 text-sm">ppm</span>
+              </div>
+            </div>
+
+            <div>
+              <label
+                for="ph"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Soil pH</label
+              >
+              <div class="flex items-center gap-4">
+                <input
+                  type="range"
+                  id="ph"
+                  name="ph"
+                  min="3"
+                  max="10"
+                  value="7"
+                  step="0.1"
+                  class="input-range flex-1 h-2 rounded-lg appearance-none cursor-pointer bg-gray-200"
+                />
+                <input
+                  type="number"
+                  id="phInput"
+                  name="phInput"
+                  min="3"
+                  max="10"
+                  value="7"
+                  step="0.1"
+                  class="w-20 px-2 py-1 border rounded-lg"
+                />
+              </div>
+            </div>
           </div>
 
-          <!-- Phosphorus -->
-          <div>
-            <label class="block font-medium text-gray-700 mb-1">Phosphorus (P)</label>
-            <input id="phosphorus" type="range" min="0" max="150" value="40" class="w-full input-range" />
-            <input id="phosphorusInput" type="number" min="0" max="150" value="40"
-              class="mt-2 w-full border p-2 rounded-md" />
-          </div>
+          <div class="space-y-6">
+            <div>
+              <label
+                for="temperature"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Temperature (°C)</label
+              >
+              <div class="flex items-center gap-4">
+                <input
+                  type="range"
+                  id="temperature"
+                  name="temperature"
+                  min="-20"
+                  max="50"
+                  value="25"
+                  step="1"
+                  class="input-range flex-1 h-2 rounded-lg appearance-none cursor-pointer bg-gray-200"
+                />
+                <input
+                  type="number"
+                  id="temperatureInput"
+                  name="temperatureInput"
+                  min="0"
+                  max="50"
+                  value="25"
+                  step="1"
+                  class="w-20 px-2 py-1 border rounded-lg"
+                />
+                <span class="text-gray-500 text-sm">°C</span>
+              </div>
+            </div>
 
-          <!-- Potassium -->
-          <div>
-            <label class="block font-medium text-gray-700 mb-1">Potassium (K)</label>
-            <input id="potassium" type="range" min="0" max="200" value="35" class="w-full input-range" />
-            <input id="potassiumInput" type="number" min="0" max="200" value="35"
-              class="mt-2 w-full border p-2 rounded-md" />
-          </div>
+            <div>
+              <label
+                for="humidity"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Humidity (%)</label
+              >
+              <div class="flex items-center gap-4">
+                <input
+                  type="range"
+                  id="humidity"
+                  name="humidity"
+                  min="0"
+                  max="100"
+                  value="50"
+                  step="1"
+                  class="input-range flex-1 h-2 rounded-lg appearance-none cursor-pointer bg-gray-200"
+                />
+                <input
+                  type="number"
+                  id="humidityInput"
+                  name="humidityInput"
+                  min="0"
+                  max="100"
+                  value="50"
+                  step="1"
+                  class="w-20 px-2 py-1 border rounded-lg"
+                />
+                <span class="text-gray-500 text-sm">%</span>
+              </div>
+            </div>
 
-          <!-- pH -->
-          <div>
-            <label class="block font-medium text-gray-700 mb-1">Soil pH</label>
-            <input id="ph" type="range" min="3" max="10" step="0.1" value="6.5" class="w-full input-range" />
-            <input id="phInput" type="number" min="3" max="10" step="0.1" value="6.5"
-              class="mt-2 w-full border p-2 rounded-md" />
-          </div>
+            <div>
+              <label
+                for="rainfall"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Rainfall (mm)</label
+              >
+              <div class="flex items-center gap-4">
+                <input
+                  type="range"
+                  id="rainfall"
+                  name="rainfall"
+                  min="0"
+                  max="500"
+                  value="100"
+                  step="10"
+                  class="input-range flex-1 h-2 rounded-lg appearance-none cursor-pointer bg-gray-200"
+                />
+                <input
+                  type="number"
+                  id="rainfallInput"
+                  name="rainfallInput"
+                  min="0"
+                  max="500"
+                  value="100"
+                  step="10"
+                  class="w-20 px-2 py-1 border rounded-lg"
+                />
+                <span class="text-gray-500 text-sm">mm</span>
+              </div>
+            </div>
 
-          <!-- Temperature -->
-          <div>
-            <label class="block font-medium text-gray-700 mb-1">Temperature (°C)</label>
-            <input id="temperature" type="range" min="10" max="50" value="25" class="w-full input-range" />
-            <input id="temperatureInput" type="number" min="10" max="50" value="25"
-              class="mt-2 w-full border p-2 rounded-md" />
+            <div>
+              <button
+                type="submit"
+                class="w-full bg-primary hover:bg-dark text-white font-medium py-2 px-4 rounded-lg transition duration-300 transform hover:scale-105 mt-4"
+              >
+                Analyze Conditions & Get Recommendations
+              </button>
+            </div>
           </div>
+        </form>
+      </div>
 
-          <!-- Humidity -->
-          <div>
-            <label class="block font-medium text-gray-700 mb-1">Humidity (%)</label>
-            <input id="humidity" type="range" min="10" max="100" value="60" class="w-full input-range" />
-            <input id="humidityInput" type="number" min="10" max="100" value="60"
-              class="mt-2 w-full border p-2 rounded-md" />
-          </div>
+      <div
+        id="resultsSection"
+        class="hidden bg-white rounded-lg shadow-md p-6 mb-8"
+      >
+        <h2 class="text-2xl font-semibold text-dark mb-6">Recommended Crops</h2>
 
-          <!-- Rainfall -->
-          <div class="sm:col-span-2">
-            <label class="block font-medium text-gray-700 mb-1">Rainfall (mm)</label>
-            <input id="rainfall" type="range" min="0" max="300" value="100" class="w-full input-range" />
-            <input id="rainfallInput" type="number" min="0" max="300" value="100"
-              class="mt-2 w-full border p-2 rounded-md" />
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          id="cropRecommendations"
+        >
+          <!-- Dynamic content will be inserted here -->
+          <div class="text-center py-8">
+            <p class="text-gray-500">
+              Submit your farm conditions to see recommendations
+            </p>
           </div>
         </div>
 
-        <button type="submit"
-          class="w-full mt-8 bg-primary hover:bg-dark text-white font-semibold py-3 rounded-lg transition">
-          Analyze Conditions & Get Recommendations
-        </button>
-      </form>
-
-      <!-- Results Section -->
-      <section id="resultsSection" class="hidden mt-10">
-        <h2 class="text-2xl font-semibold text-center text-primary mb-4">
-          🌾 Your Crop Recommendation
-        </h2>
-        <div id="cropRecommendations" class="flex justify-center"></div>
-
-        <div class="mt-6 p-6 bg-accent rounded-lg">
-          <h3 class="text-xl font-semibold mb-2 text-dark">Fertilizer Advisory</h3>
-          <div id="fertilizerInfo" class="text-gray-700">
-            Please wait while we generate fertilizer suggestions...
+        <div class="mt-8">
+          <h3 class="text-xl font-semibold text-dark mb-4">
+            Fertilizer Advisory
+          </h3>
+          <div id="fertilizerInfo" class="bg-accent p-4 rounded-lg">
+            <p class="text-gray-700">
+              Fertilizer recommendations will appear here once you submit your
+              farm conditions.
+            </p>
           </div>
         </div>
-      </section>
+      </div>
+
+      <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-semibold text-dark mb-4">How It Works</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <div
+              class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-3"
+            >
+              <img
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2ba8d643-7a61-46b8-a3d5-6c0496391e60.png"
+                alt="Soil nutrient analysis icon"
+                class="w-6 h-6"
+              />
+            </div>
+            <h3 class="font-medium text-lg mb-2">Soil Analysis</h3>
+            <p class="text-gray-600">
+              Our system evaluates your soil's N-P-K levels and pH to determine
+              nutrient availability.
+            </p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <div
+              class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-3"
+            >
+              <img
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/93c5308d-1240-4fa1-8f89-29bbe0dde066.png"
+                alt="Weather monitoring icon"
+                class="w-6 h-6"
+              />
+            </div>
+            <h3 class="font-medium text-lg mb-2">Climate Assessment</h3>
+            <p class="text-gray-600">
+              We analyze temperature, humidity and rainfall patterns for your
+              region.
+            </p>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <div
+              class="w-12 h-12 bg-primary rounded-full flex items-center justify-center mb-3"
+            >
+              <img
+                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/657b3f99-0813-4aef-9cb4-3b2488cae90e.png"
+                alt="Agricultural scientist reviewing data on tablet while standing in field of crops"
+                class="w-6 h-6"
+              />
+            </div>
+            <h3 class="font-medium text-lg mb-2">Smart Matching</h3>
+            <p class="text-gray-600">
+              Our AI matches conditions with hundreds of crop datasets to find
+              your optimal crops.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weekly Weather Outlook Section -->
+      <div class="mb-6">
+        <label
+          for="weatherLocation"
+          class="block text-sm font-medium text-gray-700 mb-2"
+          >Farm Location (for weather data)</label
+        >
+        <div class="flex gap-4">
+          <input
+            type="text"
+            id="weatherLocation"
+            placeholder="Enter city name"
+            class="flex-1 border rounded-lg px-4 py-2"
+          />
+          <button
+            type="button"
+            onclick="fetchWeather()"
+            class="bg-primary hover:bg-dark text-white px-4 py-2 rounded-lg"
+          >
+            Get Weather Data
+          </button>
+        </div>
+      </div>
+      <div
+        id="weeklyOutlook"
+        class="bg-white rounded-lg shadow-md p-6 mb-8 hidden"
+      >
+        <h2 class="text-2xl font-semibold text-dark mb-6">
+          Weekly Weather Outlook
+        </h2>
+        <div
+          id="outlook"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+        ></div>
+      </div>
     </main>
 
-    <footer class="text-center text-sm text-gray-500 mt-10 pb-6">
-      &copy; 2025 Croplytics | Empowering Farmers with AI 🌾
+    <footer class="gradient-bg text-white py-6 px-4 mt-12">
+      <p class="text-lg font-semibold">CropLytics</p>
+      <p class="text-sm">
+        A project developed as part of Learnathon 2025 | GIET University
+      </p>
+      <p class="text-sm">Built with ❤ by Team CropLytics</p>
+      <p class="text-xs mt-2">&copy; 2025 CropLytics. All rights reserved.</p>
     </footer>
 
-    <!-- Backend Integration -->
     <script>
+      // Weather API integration
+      const API_KEY = "d4038b39344d64e7396182d013780a43";
+      const FORECAST_ENDPOINT = `https://api.openweathermap.org/data/2.5/forecast?appid=${API_KEY}&units=metric&q=`;
+
+      async function fetchWeather() {
+        const location = document
+          .getElementById("weatherLocation")
+          .value.trim();
+        if (!location) return alert("Please enter a location");
+
+        try {
+          // Fetch current weather
+          const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}&units=metric&q=${location}`
+          );
+          if (!response.ok) throw new Error("Weather data not found");
+
+          const data = await response.json();
+          // Update form with weather data
+          document.getElementById("temperatureInput").value = Math.round(
+            data.main.temp
+          );
+          document.getElementById("temperature").value = Math.round(
+            data.main.temp
+          );
+          document.getElementById("humidityInput").value = data.main.humidity;
+          document.getElementById("humidity").value = data.main.humidity;
+
+          if (data.rain) {
+            document.getElementById("rainfallInput").value =
+              data.rain["1h"] || 0;
+            document.getElementById("rainfall").value = data.rain["1h"] || 0;
+          }
+
+          // Fetch and display weekly forecast
+          const forecastResponse = await fetch(FORECAST_ENDPOINT + location);
+          const forecastData = await forecastResponse.json();
+          displayWeeklyForecast(forecastData);
+        } catch (error) {
+          alert(error.message);
+        }
+      }
+
+      function displayWeeklyForecast(forecastData) {
+        const forecastMap = new Map();
+        const outlook = document.getElementById("outlook");
+        outlook.innerHTML = "";
+
+        forecastData.list.forEach((item) => {
+          const date = item.dt_txt.split(" ")[0];
+          const time = item.dt_txt.split(" ")[1];
+
+          if (time === "12:00:00" && !forecastMap.has(date)) {
+            forecastMap.set(date, item);
+
+            const div = document.createElement("div");
+            div.classList.add("bg-gray-50", "p-4", "rounded-lg");
+            div.innerHTML = `
+                        <p class="font-medium">${new Date(
+                          date
+                        ).toLocaleDateString("en-US", {
+                          weekday: "long",
+                          month: "short",
+                          day: "numeric",
+                        })}</p>
+                        <img src="https://openweathermap.org/img/wn/${
+                          item.weather[0].icon
+                        }@2x.png" class="w-16 h-16 mx-auto">
+                        <p class="text-center">${
+                          item.weather[0].description
+                        }</p>
+                        <div class="flex justify-between mt-2">
+                            <span>H: ${Math.round(item.main.temp_max)}°</span>
+                            <span>L: ${Math.round(item.main.temp_min)}°</span>
+                        </div>
+                    `;
+            outlook.appendChild(div);
+          }
+        });
+
+        document.getElementById("weeklyOutlook").classList.remove("hidden");
+      }
+
       document
         .getElementById("conditionForm")
         .addEventListener("submit", async function (e) {
           e.preventDefault();
 
-          const submitBtn = this.querySelector("button[type='submit']");
+          // Show loading state
+          const submitBtn = this.querySelector('button[type="submit"]');
           submitBtn.disabled = true;
-          submitBtn.innerText = "Analyzing...";
+          submitBtn.innerHTML = "Analyzing...";
 
+          // Collect form data
           const formData = {
-            N: document.getElementById("nitrogenInput").value,
-            P: document.getElementById("phosphorusInput").value,
-            K: document.getElementById("potassiumInput").value,
+            nitrogen: document.getElementById("nitrogenInput").value,
+            phosphorus: document.getElementById("phosphorusInput").value,
+            potassium: document.getElementById("potassiumInput").value,
             ph: document.getElementById("phInput").value,
             temperature: document.getElementById("temperatureInput").value,
             humidity: document.getElementById("humidityInput").value,
@@ -160,37 +537,108 @@
           };
 
           try {
-            const response = await fetch("https://croplytics-3.onrender.com/predict", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify(formData)
-            });
+            // Simulate API call to backend (will be replaced with real API call)
+            const response = await analyzeConditions(formData);
 
-            if (!response.ok) throw new Error("Failed to fetch crop recommendation");
-            const data = await response.json();
-
-            document.getElementById("resultsSection").classList.remove("hidden");
-            const cropsContainer = document.getElementById("cropRecommendations");
-            cropsContainer.innerHTML = `
-              <div class="crop-card bg-white border rounded-lg p-4 shadow text-center w-64">
-                <h3 class="text-lg font-medium text-primary">🌿 Recommended Crop:</h3>
-                <p class="text-2xl text-dark mt-2 font-bold">${data.crop}</p>
-              </div>
-            `;
-
-            document.getElementById("fertilizerInfo").innerHTML = `
-              <p class="text-gray-700">Fertilizer advisory coming soon...</p>
-            `;
-          } catch (err) {
-            alert(err.message);
+            // Display results
+            displayResults(response);
+          } catch (error) {
+            console.error("Error:", error);
+            alert("An error occurred while analyzing your conditions.");
           } finally {
             submitBtn.disabled = false;
-            submitBtn.innerText = "Analyze Conditions & Get Recommendations";
+            submitBtn.innerHTML = "Analyze Conditions & Get Recommendations";
           }
         });
 
+      // Mock analysis function - will be replaced with real API call
+      async function analyzeConditions(data) {
+        // Simulate API delay
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        // Mock response - in real implementation this would come from the backend
+        const crops = [
+          {
+            name: "Wheat",
+            probability: 85,
+            image:
+              "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3fe1d33b-f4c7-49ad-9025-f4c3006f0a1d.png",
+            alt: "Golden wheat field under blue sky with rolling hills in distance",
+            description:
+              "Wheat thrives in your soil conditions with optimal temperature range.",
+            fertilizer:
+              "Apply 120 kg/ha of Nitrogen, 60 kg/ha of Phosphorus, and 40 kg/ha of Potassium.",
+          },
+          {
+            name: "Rice",
+            probability: 78,
+            image:
+              "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5cdcc629-f53f-422a-a8e1-d9233fb103d2.png",
+            alt: "Terraced rice paddies with lush green plants and water reflections",
+            description:
+              "Your rainfall and humidity levels are excellent for rice cultivation.",
+            fertilizer:
+              "Apply 150 kg/ha of Nitrogen, 75 kg/ha of Phosphorus, and 50 kg/ha of Potassium.",
+          },
+          {
+            name: "Maize",
+            probability: 72,
+            image:
+              "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/29624418-07f4-4d15-8f14-ac9061a8e614.png",
+            alt: "Tall green maize plants with fully developed cobs in sunny agricultural field",
+            description:
+              "Your temperature and potassium levels favor maize production.",
+            fertilizer:
+              "Apply 180 kg/ha of Nitrogen, 90 kg/ha of Phosphorus, and 60 kg/ha of Potassium.",
+          },
+        ];
+
+        return {
+          crops: crops.sort((a, b) => b.probability - a.probability),
+          fertilizer: crops[0].fertilizer,
+        };
+      }
+
+      function displayResults(data) {
+        // Show results section
+        document.getElementById("resultsSection").classList.remove("hidden");
+
+        // Display crops
+        const cropsContainer = document.getElementById("cropRecommendations");
+        cropsContainer.innerHTML = "";
+
+        data.crops.forEach((crop) => {
+          const cropCard = document.createElement("div");
+          cropCard.className =
+            "crop-card bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm transition duration-300";
+
+          cropCard.innerHTML = `
+                    <div>
+                        <img src="${crop.image}" alt="${crop.alt}" class="w-full h-48 object-cover" />
+                    </div>
+                    <div class="p-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-semibold text-lg">${crop.name}</h3>
+                            <span class="bg-primary text-white text-xs font-medium px-2.5 py-0.5 rounded">${crop.probability}% Match</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-3">${crop.description}</p>
+                        <div class="w-full bg-gray-200 rounded-full h-2.5">
+                            <div class="bg-primary h-2.5 rounded-full" style="width: ${crop.probability}%"></div>
+                        </div>
+                    </div>
+                `;
+
+          cropsContainer.appendChild(cropCard);
+        });
+
+        // Display fertilizer info
+        document.getElementById("fertilizerInfo").innerHTML = `
+                <p class="font-medium mb-2">Recommended fertilization for ${data.crops[0].name}:</p>
+                <p>${data.fertilizer}</p>
+            `;
+      }
+
+      // Sync range sliders and number inputs
       function setupInputSync(rangeId, numberId) {
         const rangeInput = document.getElementById(rangeId);
         const numberInput = document.getElementById(numberId);
@@ -208,6 +656,7 @@
         });
       }
 
+      // Initialize sync for all inputs
       setupInputSync("nitrogen", "nitrogenInput");
       setupInputSync("phosphorus", "phosphorusInput");
       setupInputSync("potassium", "potassiumInput");
@@ -215,6 +664,76 @@
       setupInputSync("temperature", "temperatureInput");
       setupInputSync("humidity", "humidityInput");
       setupInputSync("rainfall", "rainfallInput");
+      
+      document
+  .getElementById("conditionForm")
+  .addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    // Show loading state
+    const submitBtn = this.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "Analyzing...";
+
+    // Collect form data
+    const formData = {
+      N: document.getElementById("nitrogenInput").value,
+      P: document.getElementById("phosphorusInput").value,
+      K: document.getElementById("potassiumInput").value,
+      ph: document.getElementById("phInput").value,
+      temperature: document.getElementById("temperatureInput").value,
+      humidity: document.getElementById("humidityInput").value,
+      rainfall: document.getElementById("rainfallInput").value,
+    };
+
+    try {
+      // Make API request to Render endpoint
+      const response = await fetch("https://croplytics-3.onrender.com/predict", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch predictions");
+      }
+
+      const data = await response.json();
+
+      // Display results
+      displayResults(data);
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred while analyzing your conditions.");
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = "Analyze Conditions & Get Recommendations";
+    }
+  });
+
+function displayResults(data) {
+  // Show results section
+  document.getElementById("resultsSection").classList.remove("hidden");
+
+  // Display recommended crop
+  const cropRecommendations = document.getElementById("cropRecommendations");
+  cropRecommendations.innerHTML = `
+    <div class="text-center py-8">
+      <h3 class="font-semibold text-lg">Recommended Crop: ${data.crop}</h3>
+    </div>
+  `;
+
+  // Display fertilizer advisory
+  const fertilizerInfo = document.getElementById("fertilizerInfo");
+  fertilizerInfo.innerHTML = `
+    <p class="font-medium mb-2">Fertilizer Advisory:</p>
+    <p>${data.fertilizer || "No advisory available"}</p>
+  `;
+}
+  
+  
     </script>
   </body>
 </html>
