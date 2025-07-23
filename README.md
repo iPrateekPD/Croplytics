@@ -1,1 +1,16 @@
-# Croplytics
+Team Code : SL1 6
+
+# Project Croplytics
+An ML-powered Crop and Fertilizer Recommendation System — empowering farmers with intelligent decisions 🌾, using soil and weather data to maximize crop yield.
+
+# Team Members
+1. Anshuman Patra, 24CSE181
+2. Arati Patra, 24CSE186
+3. Nandani Panda, 24CSEAIML091
+4. Pratik Das, 24ECE002
+
+# Presentation PPT 
+🔗 :
+
+# Demo Video 
+🔗 :
