@@ -3,22 +3,35 @@ from flask_cors import CORS
 import joblib
 import numpy as np
 
+# Load the trained model
 model = joblib.load('crop_recommendation_model.pkl')
 
 app = Flask(__name__)
 CORS(app)
 
+# ✅ Root route to test if server is working
+@app.route('/')
+def index():
+    return "✅ Crop Recommendation Backend is Running!"
+
+# ✅ Prediction route
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.get_json()
-    N = float(data['N'])
-    P = float(data['P'])
-    K = float(data['K'])
-    temperature = float(data['temperature'])
-    humidity = float(data['humidity'])
-    ph = float(data['ph'])
-    rainfall = float(data['rainfall'])
 
+    # Extract features from request
+    try:
+        N = float(data['N'])
+        P = float(data['P'])
+        K = float(data['K'])
+        temperature = float(data['temperature'])
+        humidity = float(data['humidity'])
+        ph = float(data['ph'])
+        rainfall = float(data['rainfall'])
+    except (KeyError, ValueError) as e:
+        return jsonify({'error': str(e)}), 400
+
+    # Predict crop
     input_data = np.array([[N, P, K, temperature, humidity, ph, rainfall]])
     prediction = model.predict(input_data)
 
