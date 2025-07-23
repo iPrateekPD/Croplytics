@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Crop Recommendation System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 60px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2e7d32;
+      margin-bottom: 30px;
+    }
+
+    h1 img {
+      width: 24px;
+      vertical-align: middle;
+      margin-left: 8px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .full-width {
+      grid-column: span 2;
+      text-align: center;
+    }
+
+    button {
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #1565c0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Crop Recommendation System <img src="https://cdn-icons-png.flaticon.com/512/2909/2909753.png" alt="icon"></h1>
+    <form>
+      <div>
+        <label>Nitrogen</label>
+        <input type="number" placeholder="Enter Nitrogen value">
+      </div>
+      <div>
+        <label>Phosphorus</label>
+        <input type="number" placeholder="Enter Phosphorus value">
+      </div>
+      <div>
+        <label>Potassium</label>
+        <input type="number" placeholder="Enter Potassium">
+      </div>
+      <div>
+        <label>Temperature</label>
+        <input type="text" placeholder="Enter Temperature in °C">
+      </div>
+      <div>
+        <label>Rainfall</label>
+        <input type="text" placeholder="Enter Rainfall in mm">
+      </div>
+      <div>
+        <label>Humidity</label>
+        <input type="text" placeholder="Enter Humidity in %">
+      </div>
+      <div>
+        <label>pH</label>
+        <input type="text" placeholder="Enter pH value">
+      </div>
+      <div class="full-width">
+        <button type="submit">Get Recommendation</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
