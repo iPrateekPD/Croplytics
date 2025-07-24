@@ -10,7 +10,7 @@ An ML-powered Crop and Fertilizer Recommendation System — empowering farmers w
 4. Pratik Das, 24ECE002
 
 # Presentation PPT 
-🔗 :
+🔗 : https://drive.google.com/drive/folders/1vff22ncnp00sZR_CvmS5tuYaAqyH3xBI?usp=sharing
 
 # Demo Video 
 🔗 : https://drive.google.com/uc?id=1wR07B4fUZSMxZt0GuyDnnjAs7Sr5K3A8&export=download
