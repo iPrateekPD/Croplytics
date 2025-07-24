@@ -5,7 +5,7 @@ An ML-powered Crop and Fertilizer Recommendation System — empowering farmers w
 
 # Team Members
 1. Ansuman Patra, 24CSE181, 24UG010245
-2. Arati Patra, 24CSE186, 24UG010348
+2. Arati Patra, 24CSE286, 24UG010348
 3. Nandini Panda, 24CSEAIML091, 24UG010588
 4. Pratik Das, 24ECE002, 24UG010892
 
